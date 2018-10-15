@@ -1,0 +1,104 @@
+@require 'cozy-ui/build'
+
+.app-content
+    padding-left: 2rem
+
+$item-real-margin = .7em
+$item-margin = .8em
+
+.item-list
+    display flex
+    flex-wrap wrap
+    box-sizing border-box
+
+    .item-wrapper
+        display flex
+        padding 20px 0
+        border-radius 4px
+        border 1px solid silver
+        cursor pointer
+        margin: $item-real-margin
+        text-align center
+        transition .2s ease all
+        flex-direction column
+        flex-basis 'calc(100% - %s * 2)' % $item-margin
+        justify-content center
+        text-decoration none
+        &:hover
+            box-shadow 0 4px 12px 0 alpha(black, .15)
+            transform scale(1.05)
+        &.--add-file
+            border-style dashed
+            border-width 2px
+
+
+    @media (min-width: 50em)
+        .item-wrapper
+            flex-basis 'calc(33.333% - %s * 2)' % $item-margin
+
+    @media (min-width: 80em)
+        .item-wrapper
+            flex-basis 'calc(25% - %s * 2)' % $item-margin
+
+
+
+.toolbar
+    display flex
+    margin: 1.875rem 2rem
+    align-items center
+    h2
+        margin 0
+        span, a
+            color coolGrey
+            font-weight normal
+            text-decoration none
+            &:last-child
+                color black
+                font-weight bold
+            svg
+                margin: 0 .25rem
+    button, div
+        margin-left auto
+
+
+.entries-table
+    display flex
+    flex-direction column
+    .entries-head
+        display flex
+        padding 10px
+        span
+            flex: 0 0 23%;
+            color coolGrey
+            text-transform uppercase
+            font-size .7rem
+            font-weight bold
+            &:first-child
+                color charcoalGrey
+            &.actions
+                flex 0 0 5%
+    .entry
+        border-top 1px solid silver
+        padding 10px
+        margin 0
+        cursor pointer
+        display flex
+        text-decoration none
+        span
+            align-items center
+            display flex
+            flex: 0 0 23%;
+            color coolGrey
+            &:first-child
+                color charcoalGrey
+                svg
+                    margin-right 10px
+            &.actions
+                display none
+                flex 0 0 5%
+        &:hover .actions
+            display: flex
+        &:hover
+            background-color paleGrey
+        &:last-child
+            border-bottom 1px solid silver
